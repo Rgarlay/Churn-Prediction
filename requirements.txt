@@ -1,0 +1,10 @@
+uv
+dotenv
+requests
+pandas
+numpy
+pymysql
+SQLAlchemy
+ipykernel
+
+-e .
