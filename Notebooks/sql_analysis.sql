@@ -1,8 +1,4 @@
 use churn_db
-
-alter table churn
-drop column signup_date
-
 select * from churn
 
 DELIMITER $$
@@ -15,6 +11,7 @@ DELIMITER ;
 SELECT column_name
 FROM information_schema.columns
 WHERE table_name = 'churn'
+
 ---------------------------------------------------------
 ## General Analysis
 
@@ -43,7 +40,7 @@ SELECT *
 FROM churn
 WHERE
     customer_id IS NULL OR  age IS NULL OR  location IS NULL OR  subscription_type IS NULL OR  payment_plan IS NULL
-    OR  num_subscription_pauses IS NULL OR  payment_method IS NULL OR  customer_service_inquiries IS NULL OR  signup_date IS NULL
+    OR  num_subscription_pauses IS NULL OR  payment_method IS NULL OR  customer_service_inquiries IS NULL
     OR  weekly_hours IS NULL OR  average_session_length IS NULL OR  song_skip_rate IS NULL OR  weekly_songs_played IS NULL 
     OR  weekly_unique_songs IS NULL OR  num_favorite_artists IS NULL OR  num_platform_friends IS NULL OR  num_playlists_created IS NULL
     OR  num_shared_playlists IS NULL OR  notifications_clicked IS NULL OR churned IS NULL;
@@ -176,6 +173,9 @@ GROUP BY churned;
 
 -- Do churned users play fewer songs per week?
 
+select min(weekly_songs_played), max(weekly_songs_played) from churn
+
+
 SELECT
     churned,
     COUNT(weekly_songs_played) AS users,
@@ -183,9 +183,29 @@ SELECT
 FROM churn
 WHERE weekly_songs_played IS NOT NULL
 GROUP BY churned;
+
+SELECT
+    CASE 
+        WHEN weekly_songs_played < 25 THEN '1: Low Activity (3-25)'
+        WHEN weekly_songs_played BETWEEN 25 AND 100 THEN '2: Casual (26-100)'
+        WHEN weekly_songs_played BETWEEN 101 AND 250 THEN '3: Active (101-250)'
+        WHEN weekly_songs_played > 250 THEN '4: Power User (251+)'
+    END AS activity_tier,
+    COUNT(*) AS total_users,
+    -- The average of a 0/1 column is the percentage (Churn Rate)
+    ROUND(AVG(CAST(churned AS FLOAT)), 4) AS churn_rate,
+    ROUND(AVG(weekly_songs_played), 2) AS avg_songs_in_tier
+FROM churn
+WHERE weekly_songs_played IS NOT NULL
+GROUP BY 1
+ORDER BY 1;
 -- > Almost no difference.
 
 -- Do churned users listen to fewer unique songs?
+
+select min(weekly_unique_songs), max(weekly_unique_songs) from churn
+
+
 
 SELECT
     churned,
@@ -194,6 +214,25 @@ SELECT
 FROM churn
 WHERE weekly_unique_songs IS NOT NULL
 GROUP BY churned;
+
+
+SELECT
+    CASE 
+        WHEN weekly_unique_songs < 20 THEN '1: Very Low (3-19)'
+        WHEN weekly_unique_songs BETWEEN 20 AND 50 THEN '2: Low (20-50)'
+        WHEN weekly_unique_songs BETWEEN 51 AND 100 THEN '3: Medium (51-100)'
+        WHEN weekly_unique_songs BETWEEN 101 AND 200 THEN '4: High (101-200)'
+        ELSE '5: Extreme (201-299)' 
+    END AS unique_song_group,
+    COUNT(*) AS total_users,
+    -- Calculate Churn Rate: (Sum of churned / Total users)
+    ROUND(AVG(CAST(churned AS FLOAT)), 4) AS churn_rate,
+    ROUND(AVG(weekly_unique_songs), 2) AS avg_songs_in_bucket
+FROM churn
+WHERE weekly_unique_songs IS NOT NULL
+GROUP BY 1
+ORDER BY 1;
+
 
 -- > Almost nodifference. 
 
