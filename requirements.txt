@@ -6,5 +6,8 @@ numpy
 pymysql
 SQLAlchemy
 ipykernel
+scikit-learn
+yml
+
 
 -e .

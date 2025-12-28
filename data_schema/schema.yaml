@@ -1,0 +1,21 @@
+columns:
+- 'age': 'int64'
+- 'subscription_type': 'object'
+- 'num_subscription_pauses': 'int64'
+- 'customer_service_inquiries': 'object'
+- 'weekly_hours': 'float64'
+- 'song_skip_rate': 'float64'
+- 'num_platform_friends': 'int64'
+- 'num_shared_playlists': 'int64'
+- 'notifications_clicked': 'int64'
+- 'churned': 'int64'
+
+numerical_columns:
+- age
+- num_subscription_pauses
+- weekly_hours
+- song_skip_rate
+- num_platform_friends
+- num_shared_playlists
+- notifications_clicked
+- churned

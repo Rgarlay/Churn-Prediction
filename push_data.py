@@ -58,14 +58,10 @@ class PushingDataToMySQL():
 
 if __name__ == "__main__":
     mysql_url = os.getenv('mysql_string')
-
     pushing_data = PushingDataToMySQL(db_name='churn_db')
     engine = pushing_data.creating_db(connection_url=mysql_url,create_new_db=False)
-
     file_path = r'archieve\churn_data.csv'
     new_df = pd.read_csv(file_path)
-
-    
     pushing_data.csv_to_sql(new_dataframe=new_df, table_to_append_to='churn', if_exists='replace')
 
 
