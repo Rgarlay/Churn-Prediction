@@ -1,0 +1,71 @@
+HIGH IMPACT INSIGHTS
+
+Records analyzed: 125,000
+
+Overall churn rate: 0.51 (51% users churn)
+
+
+Churn rate by subscription type:
+Free: 80% churns
+Premium: 34% churn
+
+Churn rate by subscription pauses:
+Above 2 pauses: 64.5% churn
+≤ 2 pauses: 43% churn
+
+Average weekly hours:
+~9 hour difference between churned and non-churned users
+
+Average skip rate:
+Churned: 0.55
+Not churned: 0.45
+
+Customer service inquiries:
+High inquiries: ~75% churn
+Medium inquiries: ~51% churn
+Low inquiries: ~28% churn
+
+----
+Based on artists-group,
+engagement level,
+skip rate,
+inquiry level, 
+users, churn can be predicted (high vs not)
+---
+
+MEDIUM IMPACT INSIGHTS
+
+Churn rate by age group:
+Highest: 18–24 and 65–79 (~62%)
+Lowest: 35–44 and 45–54 (~40%)
+
+Notification clicks:
+~1% difference between churned and non-churned users
+
+Shared playlists (binary):
+~2% higher churn (data highly imbalanced)
+
+LOW IMPACT INSIGHTS
+Churn rate by location:
+No significant difference
+
+Payment plan (monthly vs yearly):
+No significant difference
+
+Payment method (Apple Pay, debit, credit card, PayPal):
+No significant difference
+
+Number of favorite artists:
+No significant difference
+
+Weekly songs played:
+~0.3% difference between churned and non-churned users
+
+Friends group range:
+No significant difference
+
+Number of playlists created:
+No significant difference
+
+Number of playlists shared (count-based):
+No significant difference
