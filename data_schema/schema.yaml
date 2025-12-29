@@ -10,12 +10,10 @@ columns:
 - 'notifications_clicked': 'int64'
 - 'churned': 'int64'
 
-numerical_columns:
+continuous_numerical_columns:
 - age
-- num_subscription_pauses
 - weekly_hours
 - song_skip_rate
 - num_platform_friends
 - num_shared_playlists
 - notifications_clicked
-- churned

@@ -7,6 +7,8 @@ FILE_PATH: str = 'feature-csv'
 TRAIN_FILE_NAME: str = 'train.csv'
 TEST_FILE_NAME: str = 'test.csv'
 FILE_NAME: str = 'feature.csv'
+SCHEMA_FILE_PATH: str = 'data_schema\schema.yaml'
+
 
 '''
 constants for the ingestion will start with DATA_INGESTION_

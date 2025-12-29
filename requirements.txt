@@ -7,7 +7,7 @@ pymysql
 SQLAlchemy
 ipykernel
 scikit-learn
-yml
+pyyml
 
 
 -e .
