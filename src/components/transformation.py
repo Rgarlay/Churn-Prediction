@@ -88,7 +88,7 @@ class DataTransformation:
                 f"Train shape: {train_file.shape}, "
                 f"Test shape: {test_file.shape}"
             )
-              
+              logging.info(f'The columns for the app.py are{train_file.columns}')
               train_file_feature_engineered = df_transform(x=train_file, mapping=training_pipeline.DATA_TRANSFORMATION_FEATURE_MAPPING)
               test_file_feature_engineered = df_transform(x=test_file, mapping = training_pipeline.DATA_TRANSFORMATION_FEATURE_MAPPING)
               
@@ -124,6 +124,9 @@ class DataTransformation:
               save_numpy_obj(object_to_save=train_arr, file_path=self.data_transformation_config.transformed_train_file_path)
               save_numpy_obj(object_to_save=test_arr, file_path=self.data_transformation_config.transformed_test_file_path)
               save_pickle_file(file_to_save=preprocessor, file_path=self.data_transformation_config.trained_obj_file_path)
+
+              save_pickle_file(file_path=r'final_obj/preprocessor.pkl',file_to_save=preprocessor)
+
 
               logging.info(
                 "Transformation artifacts saved | "

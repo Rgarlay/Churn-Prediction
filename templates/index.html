@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Churn Prediction</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+        }
+        form {
+            max-width: 500px;
+        }
+        label {
+            font-weight: bold;
+        }
+        input, select {
+            width: 100%;
+            padding: 6px;
+            margin: 6px 0 12px 0;
+        }
+        small {
+            color: gray;
+        }
+        button {
+            padding: 10px;
+            width: 100%;
+            font-size: 16px;
+        }
+    </style>
+</head>
+
+<body>
+
+<h2>🎵 Customer Churn Prediction</h2>
+
+<form action="/predict" method="post">
+
+    <label>Age</label>
+    <input type="number" name="age" required>
+    <small>Typical range: 18 – 70</small>
+
+    <label>Subscription Type</label>
+    <select name="subscription_type" required>
+        <option value="">Select</option>
+        <option value="Free">Free</option>
+        <option value="Premium">Premium</option>
+        <option value="Family">Family</option>
+        <option value="Student">Student</option>
+    </select>
+
+    <label>Number of Subscription Pauses</label>
+    <input type="number" name="num_subscription_pauses" required>
+    <small>Range: 0 – 10</small>
+
+    <label>Customer Service Inquiries</label>
+    <select name="customer_service_inquiries" required>
+        <option value="">Select</option>
+        <option value="Low">Low</option>
+        <option value="Medium">Medium</option>
+        <option value="High">High</option>
+    </select>
+
+    <label>Weekly Listening Hours</label>
+    <input type="number" step="any" name="weekly_hours" required>
+    <small>Range: 0 – 60 hours</small>
+
+    <label>Song Skip Rate</label>
+    <input type="number" step="any" name="song_skip_rate" required>
+    <small>Range: 0.0 – 1.0</small>
+
+    <label>Number of Platform Friends</label>
+    <input type="number" name="num_platform_friends" required>
+    <small>Range: 0 – 500</small>
+
+    <label>Number of Shared Playlists</label>
+    <input type="number" name="num_shared_playlists" required>
+    <small>Range: 0 – 100</small>
+
+    <label>Notifications Clicked</label>
+    <input type="number" name="notifications_clicked" required>
+    <small>Range: 0 – 200</small>
+
+    <br><br>
+    <button type="submit">Predict Churn</button>
+</form>
+
+{% if prediction is defined %}
+    <h3>Prediction Result</h3>
+    <p><strong>Churn:</strong> {{ prediction }}</p>
+{% endif %}
+
+</body>
+</html>

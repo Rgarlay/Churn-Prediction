@@ -11,7 +11,7 @@ FILE_NAME: str = 'feature.csv'
 SCHEMA_FILE_PATH: str = 'data_schema\schema.yaml'
 PREPROCESSING_OBJECT_FILE_NAME: str = 'preprocessor.pkl'
 TARGET_COLUMN: str = 'churned'
-
+AWS_BUCKET_NAME:str = 'churn-aws-bucket'
 
 '''
 constants for the ingestion will start with DATA_INGESTION_

@@ -11,5 +11,7 @@ pyyml
 xgboost
 mlflow
 dagshub
+fastapi
+python-multipart
 
 -e .
