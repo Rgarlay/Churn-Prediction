@@ -8,6 +8,8 @@ SQLAlchemy
 ipykernel
 scikit-learn
 pyyml
-
+xgboost
+mlflow
+dagshub
 
 -e .

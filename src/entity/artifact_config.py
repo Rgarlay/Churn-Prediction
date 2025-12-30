@@ -17,3 +17,23 @@ class DataValidationArtifact:
     drift_status: bool
     no_of_cols_status: bool
     
+@dataclass
+
+class DataTransformationArtifact:
+    train_file_path: str
+    test_file_path: str
+    preprocessor_obj_path: str
+
+
+@dataclass
+class ClassificationMetricArtifact:
+    recall_score: float
+    accuracy_score: float
+    f1_score: float
+
+
+@dataclass
+class ModelTrainerArtifact:
+    trained_model_file_path: str
+    train_metric_artifact: ClassificationMetricArtifact
+    test_metric_artifact: ClassificationMetricArtifact
