@@ -80,6 +80,10 @@ jobs:
           IMAGE_TAG=churn_classification_2
           docker pull ${{ secrets.AWS_ECR_LOGIN_URI }}/${{ secrets.ECR_REPOSITORY_NAME }}:${IMAGE_TAG}
 
+      - name: Stop & remove old container
+        run: |
+            docker rm -f zealous_ardinghelli || true
+
       - name: Run Docker Image
         run: |
                 IMAGE_TAG=churn_classification_2
