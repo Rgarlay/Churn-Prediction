@@ -1,0 +1,14 @@
+venv
+trial
+src/cloud
+src/components
+Notebooks
+logs
+setup.py
+requirements.txt
+push_data.py
+main.py
+.gitignore
+.env
+archieve
+data_schema

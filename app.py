@@ -1,5 +1,3 @@
-from src.logging.logger import logging
-from src.exception.exception import CustomException
 
 from fastapi import FastAPI, Request, Form
 from fastapi.templating import Jinja2Templates
@@ -10,7 +8,7 @@ import pandas as pd
 import numpy as np
 
 from uvicorn import run as app_run
-from src.pipelines.training_pipeline import TrainingPipeline
+#from src.pipelines.training_pipeline import TrainingPipeline
 from src.utils.utils import load_pickle_file, df_transform
 from src.utils.ml_utils.eval_models import ChurnModel
 from src.constants.training_pipeline import DATA_TRANSFORMATION_FEATURE_MAPPING
@@ -28,14 +26,11 @@ preprocessor = load_pickle_file('final_obj/preprocessor.pkl')
 def index():
     return f'This is the first page'
 
-@app.get("/train")
-async def train_route():
-    try:
-        training_pipeline = TrainingPipeline()
-        training_pipeline.run_pipeline()
-        return f"Tranining has finished"
-    except Exception as e:
-        raise CustomException(e,sys)
+# @app.get("/train")
+# async def train_route():
+#     training_pipeline = TrainingPipeline()
+#     training_pipeline.run_pipeline()
+#     return f"Tranining has finished"
     
 @app.get("/home", response_class=HTMLResponse)
 async def home(request: Request):
@@ -93,7 +88,4 @@ async def predict(
     )
 
 if __name__ == "__main__":
-    try:
-        app_run(app, host="0.0.0.0", port=8000)
-    except Exception as e:
-        raise CustomException(e,sys)
+    app_run(app, host="0.0.0.0", port=8000)

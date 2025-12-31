@@ -7,9 +7,9 @@ from src.constants import training_pipeline
 class TrainingPipelineConfig:
     def __init__(self, timestamp = datetime.now()):
         try:
-            timestamp = timestamp.strftime("%m-%d-%y-%H-%M-%S")
+            self.timestamp = timestamp.strftime("%m-%d-%y-%H-%M-%S")
             self.artifact_name = training_pipeline.ARTIFACT_DIR
-            self.artifact_dir = os.path.join(self.artifact_name, timestamp)
+            self.artifact_dir = os.path.join(self.artifact_name, self.timestamp)
             self.model_dir = os.path.join('final_obj')
         except Exception as e:
             raise CustomException(e,sys)

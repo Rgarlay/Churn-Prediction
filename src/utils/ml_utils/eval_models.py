@@ -18,12 +18,12 @@ def evaluate_models(models: dict, params:dict, x_train,x_test,y_train,y_test):
 
             grid = GridSearchCV(model, param_grid=param, cv = 2)
 
-            grid.fit(x_train,x_test)
+            grid.fit(x_train,y_train)
 
             model.set_params(**grid.best_params_)
-            model.fit(x_train,x_test)
+            model.fit(x_train,y_train)
             
-            y_pred = model.predict(y_train)
+            y_pred = model.predict(x_test)
             
             test_r2_score = recall_score(y_true=y_test, y_pred=y_pred)
 

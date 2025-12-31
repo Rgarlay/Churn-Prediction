@@ -10,15 +10,14 @@ from src.entity.entity_config import (
     DataValidationConfig,
     ModelTrainerConfig
     )
-from src.entity.artifact_config import (ModelTrainerArtifact,
-                                           DataIngestionArtifact,
+from src.entity.artifact_config import (DataIngestionArtifact,
                                            DataTransformationArtifact,
                                            DataValidationArtifact)
 
 from src.components.ingestion import DataIngestion,DataIngestionArtifact
 from src.components.validation import DataValidation,DataValidationArtifact
 from src.components.transformation import DataTransformation, DataValidationArtifact
-from src.components.training import ModelTrainer,ModelTrainerArtifact
+from src.components.training import ModelTrainer
 
 from src.cloud.s3_syncer import s3Sync
 
@@ -34,7 +33,7 @@ class TrainingPipeline:
     
     def initiate_data_ingestion(self):
         try:
-            self.data_ingestion_config  = DataIngestionConfig(train_pipeline_config=self.training_pipeline_config)
+            self.data_ingestion_config  = DataIngestionConfig(training_config=self.training_pipeline_config)
             data_ingestion = DataIngestion(self.data_ingestion_config)
             data_ingestion_artifact = data_ingestion.initiate_data_ingestion()
             

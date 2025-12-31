@@ -92,8 +92,8 @@ class DataTransformation:
               train_file_feature_engineered = df_transform(x=train_file, mapping=training_pipeline.DATA_TRANSFORMATION_FEATURE_MAPPING)
               test_file_feature_engineered = df_transform(x=test_file, mapping = training_pipeline.DATA_TRANSFORMATION_FEATURE_MAPPING)
               
-              train_file_feature_engineered = train_file_feature_engineered.head(50)
-              test_file_feature_engineered = test_file_feature_engineered.head(10)
+            #   train_file_feature_engineered = train_file_feature_engineered.head(50)
+            #   test_file_feature_engineered = test_file_feature_engineered.head(10)
 
               logging.info("Feature engineering completed on train and test data.")
 
