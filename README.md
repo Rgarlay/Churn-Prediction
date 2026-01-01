@@ -31,13 +31,15 @@ Analyse customer subscription details and listening behavior:
 
 ## Metrics
 
-
-
+| Model | Recall Score | Accuracy Score | F1 Score |
+|-------|--------------|----------------|----------|
+| AdaBoostClassifier | 0.8221 | 0.8457 | 0.8455 |
+| RandomForestClassifier | 0.8471 | 0.8445 | 0.8484 |
+| XGBClassifier | 0.8351 | 0.8457 | 0.8476 |
 
 ## Future Prospects 
 * Adding Test cases before model updation.
 * Adding more models in training phase.
 * Add more project oriented constraints to data to and fro from database.
 
-
-
+Hi, if you have any further queries or suggestions, feel contact me at: - ravigarlay@outlook.com 
