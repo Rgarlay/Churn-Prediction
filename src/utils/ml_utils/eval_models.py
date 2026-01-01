@@ -24,10 +24,23 @@ def evaluate_models(models: dict, params:dict, x_train,x_test,y_train,y_test):
             model.fit(x_train,y_train)
             
             y_pred = model.predict(x_test)
-            
+            y_train_pred = model.predict(x_train)
+
+            train_r2_score = recall_score(y_true=y_train, y_pred=y_train_pred)
+            train_accuracy = accuracy_score(y_true=y_train, y_pred=y_train_pred)
+            train_f1 = f1_score(y_true=y_train, y_pred=y_train_pred)
+
+            # Test predictions
             test_r2_score = recall_score(y_true=y_test, y_pred=y_pred)
+            test_accuracy = accuracy_score(y_true=y_test, y_pred=y_pred)
+            test_f1 = f1_score(y_true=y_test, y_pred=y_pred)
 
             
+            logging.info(
+                f"{model} metrics:\n"
+                f"Train -> Recall: {train_r2_score:.4f}, Accuracy: {train_accuracy:.4f}, F1-Score: {train_f1:.4f}\n"
+                f"Test  -> Recall: {test_r2_score:.4f}, Accuracy: {test_accuracy:.4f}, F1-Score: {test_f1:.4f}"
+)
             report[list(models.keys())[i]] = test_r2_score
         
         return report
@@ -49,7 +62,7 @@ def get_classification_score(y_test, y_pred):
         )
 
         logging.info(
-            f"Classification Metrics — Accuracy: {accuracy}, Recall: {recall}, F1 Score: {f1}"
+            f"Classification Metrics:  Accuracy: {accuracy}, Recall: {recall}, F1 Score: {f1}"
         )
 
         return classification_artifact
