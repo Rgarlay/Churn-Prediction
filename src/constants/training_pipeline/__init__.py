@@ -13,6 +13,13 @@ PREPROCESSING_OBJECT_FILE_NAME: str = 'preprocessor.pkl'
 TARGET_COLUMN: str = 'churned'
 AWS_BUCKET_NAME:str = 'churn-aws-bucket'
 
+COLUMNS_TO_DROP =  ['index','location','payment_method',
+                            'customer_id','payment_plan',
+                            'signup_date','average_session_length',
+                          'num_favorite_artists','num_playlists_created',
+                          'weekly_songs_played', 'weekly_unique_songs']
+
+
 '''
 constants for the ingestion will start with DATA_INGESTION_
 '''

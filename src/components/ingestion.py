@@ -7,7 +7,7 @@ from sklearn.model_selection import train_test_split
 import sqlalchemy
 from dotenv import load_dotenv
 from src.entity.entity_config import DataIngestionConfig
-from src.constants.training_pipeline import DATABASE_NAME
+from src.constants.training_pipeline import DATABASE_NAME, COLUMNS_TO_DROP
 from src.utils.utils import save_pickle_file,load_pickle_file
 from src.entity.artifact_config import DataIngestionArtifact
 
@@ -45,11 +45,7 @@ class DataIngestion:
                 f"with shape {dataframe.shape}."
             )
             
-            cols_to_drop = ['index','location','payment_method',
-                            'customer_id','payment_plan',
-                            'signup_date','average_session_length',
-                          'num_favorite_artists','num_playlists_created',
-                          'weekly_songs_played', 'weekly_unique_songs']
+            cols_to_drop = COLUMNS_TO_DROP
         
             dataframe.drop(columns=[col for col in cols_to_drop if col in dataframe.columns],inplace=True)
 

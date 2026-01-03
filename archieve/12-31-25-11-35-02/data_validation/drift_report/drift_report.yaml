@@ -1,0 +1,18 @@
+age:
+  is_drift_found: false
+  pvalue: 0.16405381426896026
+notifications_clicked:
+  is_drift_found: false
+  pvalue: 0.8413867358034897
+num_platform_friends:
+  is_drift_found: false
+  pvalue: 0.9998532708699449
+num_shared_playlists:
+  is_drift_found: false
+  pvalue: 0.33983284510402034
+song_skip_rate:
+  is_drift_found: false
+  pvalue: 0.7515077881300216
+weekly_hours:
+  is_drift_found: false
+  pvalue: 0.11328354853948752
